@@ -1,0 +1,20 @@
+;Sulav Poudyal
+;11/30/2016
+;Concept of Programming Language - Dr. Watson
+;Scheme program to filter a list if the element in the list is less that 5.
+
+;sub-function filter1 which takes two argument
+(define filter1(lambda(l1 l2)
+     		;if list is empty return l2	
+		(cond ((null? l1) l2) 
+			;if the element of the list is less than five, add the element to list l2
+			((< (car l1) 5) (filter1 (cdr l1) (append l2 (list (car l1))))) 
+			;otherwise call filter1 on cdr l1	
+			(else (filter1 (cdr l1) l2)))	 ))
+;main function filter that takes one argument and calls sub-function filter1
+(define filter(lambda(l1) 
+	
+	(filter1 l1 '())))
+
+;Test input: (filter '(1 2 6 8 0 3 4 5))
+;Output: (1 2 0 3 4)

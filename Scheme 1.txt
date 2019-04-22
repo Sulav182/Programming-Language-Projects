@@ -1,0 +1,23 @@
+;Sulav Poudyal
+;11/30/2016
+;Concept of Programming Language - Dr. Watson
+;Scheme program to rotate the element in a list
+
+;defining a sub function rotate1 that takes three arguments
+(define rotate1(lambda(l1 l2 result)
+     		;if list is empty return result	
+		(cond ((null? l1) result)
+			   ;otherwise call rotate1 function recursively
+			   (else (rotate1 (cdr l1) (append l2 (list (car l1))) 
+					
+				 (append result (list (append l1 l2)))
+				
+				      
+				
+				))))) 
+;main rotate function that takes one argument		
+(define rotate(lambda(l1) 
+			(rotate1 l1 '() '())))
+	
+;Test input:(rotate '(a b c d e))
+;Output: ((a b c d e) (b c d e a) (c d e a b) (d e a b c) (e a b c d))

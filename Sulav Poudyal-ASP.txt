@@ -1,0 +1,19 @@
+% Sulav Poudyal - Answer Set Programming Project
+% This program checks if the connection of graph is strong,weak or neither.
+% The program takes edge as an input with two vertices in it. eg. edge(a,b),edge(a,c),edge(b,c) etc.
+
+% true when there is strong connection and when there is only one edge in the graph 
+strong():- sconnect(X,Y,Z).
+strong():- 1{edge(A,B):A!=B}1.
+
+% true only when there is a weak connection
+weak():-wconnect(X,Y,Z).
+
+% weak connection when three vertices are indirectly connected
+wconnect(X,Y,Z) :- edge(X,Z), edge(Z,Y), not edge(X,Y).
+
+% strong connection when three vertices are directly connected
+sconnect(X,Y,Z) :- edge(X,Z), edge(Z,Y), edge(X,Y).
+
+% no connection when the vertices are not connected.
+neither():- not strong(), not weak().
